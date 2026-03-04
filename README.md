@@ -2,11 +2,12 @@
 
 Application Vue.js 3 + Vuetify 3 qui consomme l'[API Rick and Morty](https://rickandmortyapi.com/) avec `fetch()`.
 
-**2 pages** pour introduire les bases du routage Vue Router :
+**3 pages** pour introduire les bases du routage Vue Router :
 
 | Page | Route | Concept |
 |------|-------|---------|
 | Personnages | `/` | Appel API + affichage dynamique |
+| Détail personnage | `/character/:id` | Route dynamique, `useRoute()` |
 | À propos | `/about` | Page statique, composants Vuetify |
 
 Navigation via `v-navigation-drawer` (hamburger menu).
@@ -35,13 +36,14 @@ src/
 ├── main.js              # Point d'entrée
 ├── pages/
 │   ├── HomePage.vue     # Liste des personnages (API + v-card)
+│   ├── CharacterPage.vue # Détail d'un personnage (route dynamique)
 │   └── AboutPage.vue    # Page statique (présentation + stack)
 ├── components/          # Composants réutilisables
 ├── plugins/
 │   ├── index.js         # Enregistrement des plugins
 │   └── vuetify.js       # Configuration Vuetify (dark theme)
 ├── router/
-│   └── index.js         # 2 routes (/ et /about)
+│   └── index.js         # 3 routes (/, /character/:id, /about)
 └── stores/
     └── index.js         # Pinia store
 ```
@@ -80,6 +82,18 @@ onMounted(async () => {
 ```
 
 Vuetify supporte la prop `to` nativement — elle fonctionne comme `<RouterLink>`.
+
+### Route dynamique
+
+```js
+// router/index.js
+{ path: '/character/:id', name: 'character', component: CharacterPage }
+
+// CharacterPage.vue
+const route = useRoute()
+const id = route.params.id
+await fetch(`https://rickandmortyapi.com/api/character/${id}`)
+```
 
 ## Stack
 
