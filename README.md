@@ -1,27 +1,23 @@
 # Rick & Morty Explorer
 
-Application Vue.js 3 + Vuetify 3 qui consomme l'[API Rick and Morty](https://rickandmortyapi.com/) avec `fetch()`.
+Application Vue.js 3 + Vuetify 3 — code de départ pour le cours C141.
 
-**2 pages** pour introduire les bases du routage Vue Router :
+## Objectif
 
-| Page | Route | Concept |
-|------|-------|---------|
-| Personnages | `/` | Appel API + affichage dynamique |
-| À propos | `/about` | Page statique, composants Vuetify |
+Compléter l'application en 3 étapes :
 
-Navigation via `v-navigation-drawer` (hamburger menu).
+1. **API** — Charger et afficher les personnages depuis l'API Rick and Morty
+2. **Page statique** — Remplir la page À propos avec des composants Vuetify
+3. **Navigation** — Ajouter un menu de navigation latéral
+
+La branche `solution` contient le résultat final.
 
 ## Installation
 
 ```bash
-# Cloner le dépôt
 git clone https://github.com/fallinov/esig-141-demo-vuetify-api.git
 cd esig-141-demo-vuetify-api
-
-# Installer les dépendances
 npm install
-
-# Lancer le serveur de développement
 npm run dev
 ```
 
@@ -31,12 +27,11 @@ L'application s'ouvre sur [http://localhost:3000](http://localhost:3000).
 
 ```
 src/
-├── App.vue              # Layout (drawer + v-app-bar + v-main + v-footer)
+├── App.vue              # Layout (v-app-bar + v-main + v-footer)
 ├── main.js              # Point d'entrée
 ├── pages/
-│   ├── HomePage.vue     # Liste des personnages (API + v-card)
-│   └── AboutPage.vue    # Page statique (présentation + stack)
-├── components/          # Composants réutilisables
+│   ├── HomePage.vue     # TODO : Liste des personnages (API)
+│   └── AboutPage.vue    # TODO : Page statique
 ├── plugins/
 │   ├── index.js         # Enregistrement des plugins
 │   └── vuetify.js       # Configuration Vuetify (dark theme)
@@ -46,40 +41,11 @@ src/
     └── index.js         # Pinia store
 ```
 
-## Concepts clés
+## API Rick and Morty
 
-### Appel API avec `fetch()`
-
-```js
-const characters = ref([])
-const loading = ref(true)
-const error = ref(null)
-
-onMounted(async () => {
-  try {
-    const response = await fetch('https://rickandmortyapi.com/api/character')
-    if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`)
-    const data = await response.json()
-    characters.value = data.results
-  } catch (err) {
-    error.value = err.message
-  } finally {
-    loading.value = false
-  }
-})
-```
-
-**3 états à gérer** : `loading` (chargement en cours), `error` (erreur réseau/serveur), `characters` (données).
-
-### Navigation
-
-```html
-<!-- Menu latéral avec v-list-item cliquables -->
-<v-list-item to="/" prepend-icon="mdi-account-group" title="Personnages" />
-<v-list-item to="/about" prepend-icon="mdi-information" title="À propos" />
-```
-
-Vuetify supporte la prop `to` nativement — elle fonctionne comme `<RouterLink>`.
+- **URL** : `https://rickandmortyapi.com/api/character`
+- **Réponse** : `{ info: {...}, results: [...] }`
+- **Champs utiles** : `id`, `name`, `status`, `species`, `image`
 
 ## Stack
 

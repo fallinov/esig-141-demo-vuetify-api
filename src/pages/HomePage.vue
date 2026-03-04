@@ -12,37 +12,10 @@
       {{ error }}
     </v-alert>
 
-    <!-- Liste des personnages -->
+    <!-- TODO : Liste des personnages -->
     <v-row v-else>
-      <v-col
-        v-for="character in characters"
-        :key="character.id"
-        cols="12"
-        sm="6"
-        md="4"
-        lg="3"
-      >
-        <v-card class="h-100">
-          <v-img
-            :src="character.image"
-            :alt="character.name"
-            height="200"
-            cover
-          />
-          <v-card-title>{{ character.name }}</v-card-title>
-          <v-card-text>
-            <v-chip
-              :color="statusColor(character.status)"
-              size="small"
-              class="mr-2"
-            >
-              {{ character.status }}
-            </v-chip>
-            <v-chip size="small" variant="outlined">
-              {{ character.species }}
-            </v-chip>
-          </v-card-text>
-        </v-card>
+      <v-col cols="12">
+        <p>{{ characters.length }} personnage(s) chargé(s)</p>
       </v-col>
     </v-row>
   </v-container>
@@ -56,25 +29,13 @@ const characters = ref([])
 const loading = ref(true)
 const error = ref(null)
 
-/**
- * Retourne la couleur du chip selon le statut du personnage.
- */
-function statusColor(status) {
-  const colors = { Alive: 'green', Dead: 'red', unknown: 'grey' }
-  return colors[status] || 'grey'
-}
-
-// Chargement des données au montage du composant
+// TODO : Charger les personnages depuis l'API Rick and Morty
+// URL : https://rickandmortyapi.com/api/character
+// La réponse contient { info: {...}, results: [...] }
 onMounted(async () => {
   try {
-    const response = await fetch('https://rickandmortyapi.com/api/character')
+    // TODO : fetch + vérification response.ok + extraction des résultats
 
-    if (!response.ok) {
-      throw new Error(`Erreur HTTP ${response.status}`)
-    }
-
-    const data = await response.json()
-    characters.value = data.results
   } catch (err) {
     error.value = `Impossible de charger les personnages : ${err.message}`
   } finally {
