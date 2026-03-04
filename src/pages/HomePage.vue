@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1 class="text-h4 my-4">Utilisateurs — JSONPlaceholder API</h1>
+    <h1 class="text-h4 my-4">Personnages Rick & Morty</h1>
 
     <!-- Chargement -->
     <div v-if="loading" class="d-flex justify-center my-8">
@@ -12,32 +12,35 @@
       {{ error }}
     </v-alert>
 
-    <!-- Liste des utilisateurs -->
+    <!-- Liste des personnages -->
     <v-row v-else>
       <v-col
-        v-for="user in users"
-        :key="user.id"
+        v-for="character in characters"
+        :key="character.id"
         cols="12"
         sm="6"
         md="4"
         lg="3"
       >
         <v-card class="h-100">
-          <v-card-title>{{ user.name }}</v-card-title>
-          <v-card-subtitle>{{ user.company.name }}</v-card-subtitle>
+          <v-img
+            :src="character.image"
+            :alt="character.name"
+            height="200"
+            cover
+          />
+          <v-card-title>{{ character.name }}</v-card-title>
           <v-card-text>
-            <div class="d-flex align-center mb-1">
-              <v-icon icon="mdi-email" size="small" class="mr-2" />
-              {{ user.email }}
-            </div>
-            <div class="d-flex align-center mb-1">
-              <v-icon icon="mdi-phone" size="small" class="mr-2" />
-              {{ user.phone }}
-            </div>
-            <div class="d-flex align-center">
-              <v-icon icon="mdi-map-marker" size="small" class="mr-2" />
-              {{ user.address.city }}
-            </div>
+            <v-chip
+              :color="statusColor(character.status)"
+              size="small"
+              class="mr-2"
+            >
+              {{ character.status }}
+            </v-chip>
+            <v-chip size="small" variant="outlined">
+              {{ character.species }}
+            </v-chip>
           </v-card-text>
         </v-card>
       </v-col>
@@ -49,23 +52,31 @@
 import { ref, onMounted } from 'vue'
 
 // État réactif
-const users = ref([])
+const characters = ref([])
 const loading = ref(true)
 const error = ref(null)
+
+/**
+ * Retourne la couleur du chip selon le statut du personnage.
+ */
+function statusColor(status) {
+  const colors = { Alive: 'green', Dead: 'red', unknown: 'grey' }
+  return colors[status] || 'grey'
+}
 
 // Chargement des données au montage du composant
 onMounted(async () => {
   try {
-    const response = await fetch('https://jsonplaceholder.typicode.com/users')
+    const response = await fetch('https://rickandmortyapi.com/api/character')
 
-    // Vérifier que la réponse est OK (status 200-299)
     if (!response.ok) {
       throw new Error(`Erreur HTTP ${response.status}`)
     }
 
-    users.value = await response.json()
+    const data = await response.json()
+    characters.value = data.results
   } catch (err) {
-    error.value = `Impossible de charger les utilisateurs : ${err.message}`
+    error.value = `Impossible de charger les personnages : ${err.message}`
   } finally {
     loading.value = false
   }
