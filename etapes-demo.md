@@ -182,6 +182,30 @@ const navItems = [
 - Le router est déjà câblé dans `router/index.js` — montrer le fichier
 - `@click="drawer = !drawer"` = expression JS inline dans le template
 
+## Étape 4 — Déploiement sur Vercel (~10 min)
+
+### Théorie à présenter
+
+- Vercel = plateforme de déploiement gratuite pour les projets frontend
+- Connexion avec GitHub → déploiement automatique à chaque push
+- `npm run build` génère le dossier `dist/` → c'est ça que Vercel sert
+
+### Procédure
+
+1. Aller sur [vercel.com](https://vercel.com) et se connecter avec GitHub
+2. Cliquer **Add New → Project**
+3. Importer le dépôt `esig-141-demo-vuetify-api`
+4. Vercel détecte Vite automatiquement — ne rien changer
+5. Cliquer **Deploy**
+6. Attendre ~1 min → l'URL de production s'affiche
+
+### Points à souligner
+
+- Chaque `git push` déclenche un nouveau déploiement automatique
+- L'URL est publique et accessible depuis un téléphone → tester le responsive
+- Vercel gère le HTTPS automatiquement
+- C'est gratuit pour les projets personnels (Hobby plan)
+
 ## Vérification finale
 
 - [ ] Page `/` : grille de 20 personnages avec images et chips colorés
