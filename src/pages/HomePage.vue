@@ -22,7 +22,7 @@
         md="4"
         lg="3"
       >
-        <v-card class="h-100">
+        <v-card :to="`/character/${character.id}`" class="h-100" hover>
           <v-img
             :src="character.image"
             :alt="character.name"
