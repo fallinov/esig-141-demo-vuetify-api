@@ -17,6 +17,9 @@ Consomme l'API [Rick and Morty](https://rickandmortyapi.com/) avec `fetch()`.
 
 ## Structure (code de départ)
 ```
+public/
+├── favicon.ico          # Favicon multi-tailles (16, 32, 48px)
+└── favicon.png          # Favicon PNG (silhouettes Rick & Morty)
 src/
 ├── App.vue              # Layout (app-bar + footer, pas de drawer)
 ├── pages/
