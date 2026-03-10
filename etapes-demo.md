@@ -6,9 +6,9 @@ Code de départ : branche [`main`](https://github.com/fallinov/esig-141-demo-vue
 |-------|-------|---------|
 | 0. Config Vuetify | ~5 min | Palette de couleurs Rick & Morty + favicon |
 | 1. Découvrir l'API | ~15 min | Requête GET dans Bruno, explorer le JSON |
-| 2. Appel API + affichage | ~30 min | `fetch()`, `v-card`, `v-img`, `v-chip` |
+| 2. Appel API + affichage | ~30 min | `fetch()`, [`v-card`](https://vuetifyjs.com/en/components/cards/), [`v-img`](https://vuetifyjs.com/en/components/images/), [`v-chip`](https://vuetifyjs.com/en/components/chips/) |
 | 3. Page À propos | ~15 min | Page statique avec composants Vuetify |
-| 4. Menu de navigation | ~20 min | `v-navigation-drawer`, hamburger, routage |
+| 4. Menu de navigation | ~20 min | [`v-navigation-drawer`](https://vuetifyjs.com/en/components/navigation-drawers/), hamburger, routage |
 | 5. Déploiement Vercel | ~10 min | Import GitHub, deploy, test mobile |
 | 6. Fiche de détail (bonus) | ~15 min | Route dynamique, `useRoute()`, 2ème fetch |
 | **Total** | **~1h35** | **+15 min si bonus** |
@@ -75,7 +75,7 @@ export default createVuetify({
 })
 ```
 
-Cette palette personnalisée s'applique automatiquement à tous les composants Vuetify (`v-btn`, `v-card`, `v-chip`, etc.).
+Cette palette personnalisée s'applique automatiquement à tous les composants Vuetify ([`v-btn`](https://vuetifyjs.com/en/components/buttons/), [`v-card`](https://vuetifyjs.com/en/components/cards/), [`v-chip`](https://vuetifyjs.com/en/components/chips/), etc.).
 
 ### Favicon du projet
 
@@ -263,7 +263,7 @@ Ajouter dans le `<v-container>`, après le `<h1>` :
 - Pas de JavaScript nécessaire pour une page statique — le `<script setup>` reste vide
 - [`v-card`](https://vuetifyjs.com/en/components/cards/) = conteneur principal Vuetify (title, subtitle, text, actions)
 - [`v-icon`](https://vuetifyjs.com/en/components/icons/) pour afficher des icônes MDI
-- [`v-list`](https://vuetifyjs.com/en/components/lists/) / `v-list-item` avec `prepend-icon`, `title`, `subtitle` — tout déclaratif, zéro JS
+- [`v-list`](https://vuetifyjs.com/en/components/lists/) / [`v-list-item`](https://vuetifyjs.com/en/components/lists/#v-list-item) avec `prepend-icon`, `title`, `subtitle` — tout déclaratif, zéro JS
 - Icônes MDI : catalogue sur [pictogrammers.com/library/mdi](https://pictogrammers.com/library/mdi/)
 - Tester la navigation : taper `/about` dans la barre d'adresse → la page s'affiche
 
