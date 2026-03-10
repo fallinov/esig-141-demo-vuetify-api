@@ -197,6 +197,8 @@ function statusColor(status) {
 
 > **Vérification** : recharger la page → les 20 personnages s'affichent en grille avec leurs images et chips colorés.
 
+![Résultat étape 2 — Grille de personnages](docs/screenshots/home.png)
+
 ### Erreurs fréquentes
 
 | Symptôme | Cause probable | Solution |
@@ -272,6 +274,8 @@ Ajouter dans le [`<v-container>`](https://vuetifyjs.com/en/components/grids/#v-c
   </v-card-text>
 </v-card>
 ```
+
+![Résultat étape 3 — Page À propos](docs/screenshots/about.png)
 
 ### Points à souligner
 
@@ -564,6 +568,8 @@ onMounted(async () => {
 ```
 
 > **Vérification** : taper `http://localhost:3000/character/1` dans la barre d'adresse → la fiche de Rick Sanchez s'affiche avec son image, son statut et ses infos. Si rien ne s'affiche, vérifier que le fichier est bien dans `src/pages/character/[id].vue` (avec les crochets).
+
+![Résultat étape 6 — Fiche détail de Rick Sanchez](docs/screenshots/character-detail.png)
 
 ### 2. Rendre les cards cliquables dans [`index.vue`](src/pages/index.vue)
 
