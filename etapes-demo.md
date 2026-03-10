@@ -72,8 +72,8 @@ Dans [`index.html`](index.html), remplacer la balise `<link rel="icon">` existan
 
 ### Théorie à présenter
 
-- Qu'est-ce qu'une API REST : [devjs.ch/api/introduction](https://devjs.ch/api/introduction)
-- Tester une API avant de coder : [devjs.ch/api/tester-son-api](https://devjs.ch/api/tester-son-api)
+- Qu'est-ce qu'une API REST : [devjs.ch/api/introduction](https://devjs.ch/api/introduction.html)
+- Tester une API avant de coder : [devjs.ch/api/tester-son-api](https://devjs.ch/api/tester-son-api.html)
 - Documentation de l'API : [rickandmortyapi.com/documentation](https://rickandmortyapi.com/documentation)
 
 ### Démo avec Bruno (ou Postman)
@@ -103,8 +103,8 @@ Dans [`index.html`](index.html), remplacer la balise `<link rel="icon">` existan
 
 ### Théorie à présenter
 
-- `async/await`, `try/catch`, `fetch()` : [devjs.ch/api/utilisation-en-projet](https://devjs.ch/api/utilisation-en-projet)
-- `ref()`, `onMounted` : [devjs.ch/vue/bases](https://devjs.ch/vue/bases)
+- `async/await`, `try/catch`, `fetch()` : [devjs.ch/api/utilisation-en-projet](https://devjs.ch/api/utilisation-en-projet.html)
+- `ref()`, `onMounted` : [devjs.ch/vue/bases](https://devjs.ch/vue/bases.html)
 
 ### Rappel de la structure JSON (vue dans Bruno)
 
@@ -194,7 +194,7 @@ function statusColor(status) {
 ### Théorie à présenter
 
 - Composants Vuetify : [vuetifyjs.com/components/all](https://vuetifyjs.com/en/components/all/)
-- SFC (Single File Component) : [devjs.ch/vue/anatomie](https://devjs.ch/vue/anatomie)
+- SFC (Single File Component) : [devjs.ch/vue/anatomie](https://devjs.ch/vue/anatomie.html)
 
 ### Ce que les élèves codent dans [`AboutPage.vue`](src/pages/AboutPage.vue)
 
@@ -243,7 +243,7 @@ Ajouter dans le `<v-container>`, après le `<h1>` :
 
 ### Théorie à présenter
 
-- Vue Router — introduction : [devjs.ch/vue-router/intro](https://devjs.ch/vue-router/intro)
+- Vue Router — introduction : [devjs.ch/vue-router/intro](https://devjs.ch/vue-router/intro.html)
 - `<RouterView>` dans [`App.vue`](src/App.vue) affiche le composant de la route courante
 - Montrer [`router/index.js`](src/router/index.js) — les 2 routes sont déjà câblées
 
@@ -562,8 +562,8 @@ Ajouter la prop `to` et `hover` sur chaque `<v-card>` :
 | API — documentation | [rickandmortyapi.com/documentation](https://rickandmortyapi.com/documentation) |
 | Vuetify — tous les composants | [vuetifyjs.com/components/all](https://vuetifyjs.com/en/components/all/) |
 | Icônes MDI | [pictogrammers.com/library/mdi](https://pictogrammers.com/library/mdi/) |
-| Vue.js — bases | [devjs.ch/vue/bases](https://devjs.ch/vue/bases) |
-| API — introduction | [devjs.ch/api/introduction](https://devjs.ch/api/introduction) |
-| API — tester son API | [devjs.ch/api/tester-son-api](https://devjs.ch/api/tester-son-api) |
-| API — utilisation en projet | [devjs.ch/api/utilisation-en-projet](https://devjs.ch/api/utilisation-en-projet) |
-| Vue Router — introduction | [devjs.ch/vue-router/intro](https://devjs.ch/vue-router/intro) |
+| Vue.js — bases | [devjs.ch/vue/bases](https://devjs.ch/vue/bases.html) |
+| API — introduction | [devjs.ch/api/introduction](https://devjs.ch/api/introduction.html) |
+| API — tester son API | [devjs.ch/api/tester-son-api](https://devjs.ch/api/tester-son-api.html) |
+| API — utilisation en projet | [devjs.ch/api/utilisation-en-projet](https://devjs.ch/api/utilisation-en-projet.html) |
+| Vue Router — introduction | [devjs.ch/vue-router/intro](https://devjs.ch/vue-router/intro.html) |
