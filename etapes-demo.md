@@ -4,7 +4,7 @@ Code de départ : branche `main` | Solution : branche `solution`
 
 | Étape | Durée | Contenu |
 |-------|-------|---------|
-| 0. Config Vuetify | ~5 min | Palette de couleurs Rick & Morty |
+| 0. Config Vuetify | ~5 min | Palette de couleurs Rick & Morty + favicon |
 | 1. Découvrir l'API | ~15 min | Requête GET dans Bruno, explorer le JSON |
 | 2. Appel API + affichage | ~30 min | `fetch()`, `v-card`, `v-img`, `v-chip` |
 | 3. Page À propos | ~15 min | Page statique avec composants Vuetify |
@@ -46,6 +46,23 @@ export default createVuetify({
 ```
 
 Cette palette personnalisée s'applique automatiquement à tous les composants Vuetify (`v-btn`, `v-card`, `v-chip`, etc.).
+
+### Favicon du projet
+
+Le fichier `public/favicon.png` contient les silhouettes de Rick & Morty (icône officielle de l'API).
+
+Dans `index.html`, remplacer la balise `<link rel="icon">` existante par :
+
+```html
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" href="/favicon.png">
+```
+
+### Points à souligner
+
+- Le favicon est l'icône affichée dans l'onglet du navigateur — un détail de finition important
+- Deux formats : `.ico` (compatibilité anciens navigateurs) et `.png` (navigateurs modernes)
+- Les fichiers dans `public/` sont servis tels quels à la racine du site par Vite
 
 ## Étape 1 — Découvrir l'API avec Bruno (~15 min)
 
@@ -234,7 +251,18 @@ Ajouter dans le `<v-container>`, après le `<h1>` :
 <v-app-bar-nav-icon @click="drawer = !drawer" />
 ```
 
-**3. Le script** — remplacer le contenu de `<script setup>` :
+**3. Rendre le titre cliquable** — remplacer le contenu de `<v-app-bar-title>` :
+
+```html
+<v-app-bar-title>
+  <RouterLink to="/" class="text-white text-decoration-none d-flex align-center">
+    <v-icon icon="mdi-alien" class="mr-2" />
+    Rick & Morty Explorer
+  </RouterLink>
+</v-app-bar-title>
+```
+
+**4. Le script** — remplacer le contenu de `<script setup>` :
 
 ```js
 import { ref } from 'vue'
@@ -254,6 +282,7 @@ const navItems = [
 - `v-list nav` = style arrondi automatique pour les items de navigation
 - La prop `to` de Vuetify fonctionne comme `<RouterLink>` — pas besoin d'importer le composant
 - `@click="drawer = !drawer"` = expression JS inline, inverse le booléen à chaque clic
+- `<RouterLink to="/">` sur le titre = clic sur le logo ramène à l'accueil (convention UX courante)
 - L'item actif est automatiquement mis en surbrillance par Vue Router
 
 ## Étape 5 — Déploiement sur Vercel (~10 min)
