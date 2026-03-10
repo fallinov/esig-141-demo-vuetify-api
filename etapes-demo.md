@@ -179,13 +179,14 @@ function statusColor(status) {
 
 ### Points à souligner
 
-- Le pattern **loading / error / data** avec `v-if / v-else-if / v-else` — déjà en place dans le template
+- Le pattern **loading / error / data** avec `v-if / v-else-if / v-else` — déjà en place dans le template ([`v-progress-circular`](https://vuetifyjs.com/en/components/progress-circular/), [`v-alert`](https://vuetifyjs.com/en/components/alerts/))
 - `fetch()` retourne une **promesse** → on utilise `await` pour attendre la réponse
 - `response.ok` vérifie que le code HTTP est 200-299 (pas une erreur)
 - `response.json()` transforme le texte JSON en objet JavaScript
 - `v-for` avec `:key` obligatoire — Vue a besoin d'identifier chaque élément
-- `v-img` avec `cover` pour uniformiser les tailles d'images
-- `v-chip` avec `:color` dynamique — le `:` indique un binding JavaScript
+- [`v-card`](https://vuetifyjs.com/en/components/cards/) = conteneur avec title, text, actions
+- [`v-img`](https://vuetifyjs.com/en/components/images/) avec `cover` pour uniformiser les tailles d'images
+- [`v-chip`](https://vuetifyjs.com/en/components/chips/) avec `:color` dynamique — le `:` indique un binding JavaScript
 
 ## Étape 3 — Page À propos (~15 min)
 
@@ -231,8 +232,9 @@ Ajouter dans le `<v-container>`, après le `<h1>` :
 ### Points à souligner
 
 - Pas de JavaScript nécessaire pour une page statique — le `<script setup>` reste vide
-- `v-card` = conteneur principal Vuetify (title, subtitle, text, actions)
-- `v-list-item` avec `prepend-icon`, `title`, `subtitle` — tout déclaratif, zéro JS
+- [`v-card`](https://vuetifyjs.com/en/components/cards/) = conteneur principal Vuetify (title, subtitle, text, actions)
+- [`v-icon`](https://vuetifyjs.com/en/components/icons/) pour afficher des icônes MDI
+- [`v-list`](https://vuetifyjs.com/en/components/lists/) / `v-list-item` avec `prepend-icon`, `title`, `subtitle` — tout déclaratif, zéro JS
 - Icônes MDI : catalogue sur [pictogrammers.com/library/mdi](https://pictogrammers.com/library/mdi/)
 - Tester la navigation : taper `/about` dans la barre d'adresse → la page s'affiche
 
@@ -305,8 +307,9 @@ const navItems = [
 
 ### Points à souligner
 
-- `v-model="drawer"` = binding bidirectionnel (ouvre/ferme le drawer)
+- [`v-navigation-drawer`](https://vuetifyjs.com/en/components/navigation-drawers/) avec `v-model="drawer"` = binding bidirectionnel (ouvre/ferme le drawer)
 - `temporary` = le drawer se superpose au contenu (comportement mobile)
+- [`v-app-bar`](https://vuetifyjs.com/en/components/app-bars/) contient le hamburger et le titre
 - La prop `to` de Vuetify fonctionne comme `<RouterLink>` — pas besoin d'importer le composant
 - `@click="drawer = !drawer"` = expression JS inline, inverse le booléen à chaque clic
 - `<RouterLink to="/">` sur le titre = clic sur le logo ramène à l'accueil (convention UX courante)
@@ -536,8 +539,9 @@ Ajouter la prop `to` et `hover` sur chaque `<v-card>` :
 - `useRoute().params.id` récupère la valeur du paramètre (ex : `1` pour `/character/1`)
 - Template literals `` `...${id}` `` pour construire l'URL dynamiquement
 - `?.` (optional chaining) pour éviter les erreurs si `origin` ou `location` est `null`
-- La prop `to` sur `v-card` la rend cliquable comme un lien — pas besoin de `@click`
+- La prop `to` sur [`v-card`](https://vuetifyjs.com/en/components/cards/) la rend cliquable comme un lien — pas besoin de `@click`
 - `hover` ajoute un effet visuel au survol pour indiquer que la card est cliquable
+- [`v-btn`](https://vuetifyjs.com/en/components/buttons/) avec `to="/"` pour le bouton retour
 
 ## Vérification finale
 
