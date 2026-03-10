@@ -19,7 +19,7 @@
 
       <v-app-bar-title>
         <RouterLink to="/" class="text-decoration-none d-flex align-center" style="color: inherit">
-          <v-icon icon="mdi-alien" class="mr-2" />
+          <v-img src="/favicon.png" alt="Rick & Morty" width="32" height="32" class="mr-2" />
           Rick & Morty Explorer
         </RouterLink>
       </v-app-bar-title>
