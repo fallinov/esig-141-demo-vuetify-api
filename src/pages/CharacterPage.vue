@@ -1,9 +1,14 @@
 <template>
   <v-container>
-    <!-- Chargement -->
-    <div v-if="loading" class="d-flex justify-center my-8">
-      <v-progress-circular indeterminate color="primary" size="64" />
-    </div>
+    <!-- Chargement (skeleton) -->
+    <v-row v-if="loading">
+      <v-col cols="12" md="4">
+        <v-skeleton-loader type="image" />
+      </v-col>
+      <v-col cols="12" md="8">
+        <v-skeleton-loader type="heading, text@3" />
+      </v-col>
+    </v-row>
 
     <!-- Erreur -->
     <v-alert v-else-if="error" type="error" class="my-4">
