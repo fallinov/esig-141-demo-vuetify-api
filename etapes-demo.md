@@ -22,9 +22,13 @@ Code de départ : branche `main` | Solution : branche `solution`
 
 ## Configuration initiale — Palette de couleurs Rick & Morty
 
-Dans `src/plugins/vuetify.js`, personnaliser le thème avec les couleurs iconiques de la série :
+Dans `src/plugins/vuetify.js`, **remplacer tout le contenu du fichier** par :
 
 ```js
+import '@mdi/font/css/materialdesignicons.css'
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+
 export default createVuetify({
   theme: {
     defaultTheme: 'dark',
@@ -124,6 +128,8 @@ const data = await response.json()
 characters.value = data.results
 ```
 
+> **Vérification** : recharger la page → le texte doit afficher « 20 personnage(s) chargé(s) ». Si ça affiche 0, vérifier que `characters.value` a bien le `.value`.
+
 **2. La fonction `statusColor`** — avant le `onMounted` :
 
 ```js
@@ -159,6 +165,17 @@ function statusColor(status) {
   </v-card>
 </v-col>
 ```
+
+> **Vérification** : recharger la page → les 20 personnages s'affichent en grille avec leurs images et chips colorés.
+
+### Erreurs fréquentes
+
+| Symptôme | Cause probable | Solution |
+|----------|---------------|----------|
+| « 0 personnage(s) chargé(s) » | Oubli de `.value` | Écrire `characters.value = data.results` (pas `characters = data.results`) |
+| Chip toujours grise | Oubli des `:` devant `color` | Écrire `:color="..."` (avec les deux-points), pas `color="..."` |
+| Erreur « key is required » | Oubli de `:key` | Ajouter `:key="character.id"` sur le `<v-col>` du `v-for` |
+| Image ne s'affiche pas | Oubli des `:` devant `src` | Écrire `:src="character.image"` (binding), pas `src="character.image"` (texte) |
 
 ### Points à souligner
 
@@ -276,17 +293,85 @@ const navItems = [
 ]
 ```
 
+> **Vérification** : recharger la page → cliquer sur le hamburger ☰ → le menu s'ouvre → cliquer sur « À propos » → la page change et le drawer se ferme.
+
+### Erreurs fréquentes
+
+| Symptôme | Cause probable | Solution |
+|----------|---------------|----------|
+| Le drawer ne s'ouvre pas | `drawer` pas déclaré dans le script | Vérifier que `const drawer = ref(false)` est bien dans `<script setup>` |
+| Le hamburger n'apparaît pas | Mauvais emplacement | Le `<v-app-bar-nav-icon>` doit être **dans** le `<v-app-bar>`, avant le `<v-app-bar-title>` |
+| Erreur sur `navItems` | Oubli de la déclaration | Vérifier que le tableau `navItems` est dans le `<script setup>` |
+
 ### Points à souligner
 
 - `v-model="drawer"` = binding bidirectionnel (ouvre/ferme le drawer)
 - `temporary` = le drawer se superpose au contenu (comportement mobile)
-- `v-list nav` = style arrondi automatique pour les items de navigation
 - La prop `to` de Vuetify fonctionne comme `<RouterLink>` — pas besoin d'importer le composant
 - `@click="drawer = !drawer"` = expression JS inline, inverse le booléen à chaque clic
 - `<RouterLink to="/">` sur le titre = clic sur le logo ramène à l'accueil (convention UX courante)
-- `style="color: inherit"` plutôt que `class="text-white"` — le lien hérite la couleur de la barre, fonctionne même si on change de thème
-- `currentYear` dans le script plutôt que `new Date().getFullYear()` dans le template — évite de recréer un objet Date à chaque rendu
 - L'item actif est automatiquement mis en surbrillance par Vue Router
+
+### Résultat final — `App.vue` complet
+
+Pour vérifier son code, l'élève peut comparer avec le fichier complet :
+
+```vue
+<template>
+  <v-app>
+    <!-- Menu de navigation latéral -->
+    <v-navigation-drawer v-model="drawer" temporary>
+      <v-list nav>
+        <v-list-item
+          v-for="item in navItems"
+          :key="item.to"
+          :to="item.to"
+          :prepend-icon="item.icon"
+          :title="item.title"
+        />
+      </v-list>
+    </v-navigation-drawer>
+
+    <!-- Barre de navigation -->
+    <v-app-bar color="primary" prominent>
+      <v-app-bar-nav-icon @click="drawer = !drawer" />
+
+      <v-app-bar-title>
+        <RouterLink to="/" class="text-decoration-none d-flex align-center" style="color: inherit">
+          <v-icon icon="mdi-alien" class="mr-2" />
+          Rick & Morty Explorer
+        </RouterLink>
+      </v-app-bar-title>
+    </v-app-bar>
+
+    <v-main>
+      <RouterView />
+    </v-main>
+
+    <v-footer class="text-center">
+      <v-col>
+        Démo C141 — ESIG {{ currentYear }} —
+        API
+        <a href="https://rickandmortyapi.com" target="_blank" rel="noopener noreferrer" class="text-primary">
+          rickandmortyapi.com
+        </a>
+      </v-col>
+    </v-footer>
+  </v-app>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const drawer = ref(false)
+const currentYear = new Date().getFullYear()
+
+const navItems = [
+  { title: 'Personnages', to: '/', icon: 'mdi-account-group' },
+  { title: 'À propos', to: '/about', icon: 'mdi-information' },
+]
+</script>
+```
 
 ## Étape 5 — Déploiement sur Vercel (~10 min)
 
@@ -429,6 +514,8 @@ import CharacterPage from '@/pages/CharacterPage.vue'
 }
 ```
 
+> **Vérification** : taper `http://localhost:3000/character/1` dans la barre d'adresse → la fiche de Rick Sanchez s'affiche avec son image, son statut et ses infos. Si ça ne marche pas, vérifier que la route et l'import sont bien ajoutés dans `router/index.js`.
+
 ### 3. Rendre les cards cliquables dans `HomePage.vue`
 
 Ajouter la prop `to` et `hover` sur chaque `<v-card>` :
@@ -440,6 +527,8 @@ Ajouter la prop `to` et `hover` sur chaque `<v-card>` :
 <!-- Après -->
 <v-card :to="`/character/${character.id}`" class="h-100" hover>
 ```
+
+> **Vérification** : retourner sur la page d'accueil → cliquer sur une card → la fiche du personnage s'affiche → cliquer « Retour à la liste » → on revient à la grille.
 
 ### Points à souligner
 
