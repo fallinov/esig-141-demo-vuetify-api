@@ -208,7 +208,7 @@ function statusColor(status) {
 
 ### Points à souligner
 
-- Le pattern **loading / error / data** avec `v-if / v-else-if / v-else` — déjà en place dans le template ([`v-progress-circular`](https://vuetifyjs.com/en/components/progress-circular/), [`v-alert`](https://vuetifyjs.com/en/components/alerts/))
+- Le pattern **loading / error / data** avec `v-if / v-else-if / v-else` — déjà en place dans le template ([`v-skeleton-loader`](https://vuetifyjs.com/en/components/skeleton-loaders/), [`v-alert`](https://vuetifyjs.com/en/components/alerts/))
 - `fetch()` retourne une **promesse** → on utilise `await` pour attendre la réponse
 - `response.ok` vérifie que le code HTTP est 200-299 (pas une erreur)
 - `response.json()` transforme le texte JSON en objet JavaScript
@@ -443,10 +443,15 @@ const navItems = [
 ```vue
 <template>
   <v-container>
-    <!-- Chargement -->
-    <div v-if="loading" class="d-flex justify-center my-8">
-      <v-progress-circular indeterminate color="primary" size="64" />
-    </div>
+    <!-- Chargement (skeleton) -->
+    <v-row v-if="loading">
+      <v-col cols="12" md="4">
+        <v-skeleton-loader type="image" />
+      </v-col>
+      <v-col cols="12" md="8">
+        <v-skeleton-loader type="heading, text@3" />
+      </v-col>
+    </v-row>
 
     <!-- Erreur -->
     <v-alert v-else-if="error" type="error" class="my-4">
