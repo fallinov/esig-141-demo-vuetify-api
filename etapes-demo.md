@@ -318,16 +318,18 @@ Ajouter dans le [`<v-container>`](https://vuetifyjs.com/en/components/grids/#v-c
 <v-app-bar-nav-icon @click="drawer = !drawer" />
 ```
 
-**3. Rendre le titre cliquable** — remplacer le contenu de `<v-app-bar-title>` :
+**3. Rendre le titre cliquable avec le logo** — remplacer le contenu de `<v-app-bar-title>` :
 
 ```html
 <v-app-bar-title>
   <RouterLink to="/" class="text-decoration-none d-flex align-center" style="color: inherit">
-    <v-icon icon="mdi-alien" class="mr-2" />
+    <v-img src="/favicon.png" alt="Rick & Morty" width="32" height="32" class="mr-2" />
     Rick & Morty Explorer
   </RouterLink>
 </v-app-bar-title>
 ```
+
+> On réutilise le fichier [`public/favicon.png`](public/favicon.png) (les silhouettes Rick & Morty) comme logo dans le header. Les fichiers dans `public/` sont accessibles directement via `/` dans les URLs.
 
 **4. Le script** — remplacer le contenu de `<script setup>` :
 
@@ -389,7 +391,7 @@ Pour vérifier son code, l'élève peut comparer avec le fichier complet. On y r
 
       <v-app-bar-title>
         <RouterLink to="/" class="text-decoration-none d-flex align-center" style="color: inherit">
-          <v-icon icon="mdi-alien" class="mr-2" />
+          <v-img src="/favicon.png" alt="Rick & Morty" width="32" height="32" class="mr-2" />
           Rick & Morty Explorer
         </RouterLink>
       </v-app-bar-title>
