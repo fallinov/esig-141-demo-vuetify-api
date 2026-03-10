@@ -1,4 +1,5 @@
 // Plugins
+import VueRouter from 'unplugin-vue-router/vite'
 import Components from 'unplugin-vue-components/vite'
 import Vue from '@vitejs/plugin-vue'
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
@@ -11,6 +12,8 @@ import { fileURLToPath, URL } from 'node:url'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    // File-based routing (must be before Vue)
+    VueRouter(),
     Vue({
       template: { transformAssetUrls }
     }),
