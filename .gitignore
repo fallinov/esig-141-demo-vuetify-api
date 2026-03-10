@@ -12,6 +12,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Auto-generated types (unplugin-vue-router)
+typed-router.d.ts
+
 # Editor directories and files
 .idea
 .vscode
