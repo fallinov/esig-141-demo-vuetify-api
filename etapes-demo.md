@@ -217,6 +217,20 @@ function statusColor(status) {
 - [`v-img`](https://vuetifyjs.com/en/components/images/) avec `cover` pour uniformiser les tailles d'images
 - [`v-chip`](https://vuetifyjs.com/en/components/chips/) avec `:color` dynamique — le `:` indique un binding JavaScript
 
+### Astuce démo — Voir les skeleton loaders en action
+
+Les skeleton loaders disparaissent trop vite en local car l'API répond en quelques millisecondes. Pour les montrer aux élèves :
+
+1. Ouvrir les **DevTools** du navigateur (F12)
+2. Aller dans l'onglet **Network** (Réseau)
+3. Cocher **Disable cache**
+4. Dans le menu déroulant de throttling (par défaut « No throttling »), choisir **Slow 3G**
+5. Recharger la page → les skeletons s'affichent pendant plusieurs secondes
+6. Montrer comment le squelette reprend la forme de la grille finale (image + titre + texte)
+7. Remettre « No throttling » après la démo
+
+> C'est aussi l'occasion de montrer l'onglet Network : on y voit la requête `character`, le temps de réponse, le code 200, et le JSON retourné.
+
 ## Étape 3 — Page À propos (~15 min)
 
 ### Théorie à présenter
