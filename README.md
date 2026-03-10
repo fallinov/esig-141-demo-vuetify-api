@@ -14,7 +14,7 @@ Compléter l'application en suivant les étapes du cours :
 5. **Déploiement** — Déployer sur Vercel
 6. **Fiche détail** (bonus) — Route dynamique, page détail d'un personnage
 
-La branche `solution` contient le résultat final. Voir `etapes-demo.md` pour le guide complet.
+La branche [`solution`](https://github.com/fallinov/esig-141-demo-vuetify-api/tree/solution) contient le résultat final. Voir [`etapes-demo.md`](etapes-demo.md) pour le guide complet.
 
 ## Installation
 
@@ -50,7 +50,8 @@ src/
 
 ## API Rick and Morty
 
-- **URL** : `https://rickandmortyapi.com/api/character`
+- **URL** : [`https://rickandmortyapi.com/api/character`](https://rickandmortyapi.com/api/character)
+- **Documentation** : [rickandmortyapi.com/documentation](https://rickandmortyapi.com/documentation)
 - **Réponse** : `{ info: {...}, results: [...] }`
 - **Champs utiles** : `id`, `name`, `status`, `species`, `image`
 
