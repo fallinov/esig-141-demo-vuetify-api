@@ -255,7 +255,7 @@ Ajouter dans le `<v-container>`, après le `<h1>` :
 
 ```html
 <v-app-bar-title>
-  <RouterLink to="/" class="text-white text-decoration-none d-flex align-center">
+  <RouterLink to="/" class="text-decoration-none d-flex align-center" style="color: inherit">
     <v-icon icon="mdi-alien" class="mr-2" />
     Rick & Morty Explorer
   </RouterLink>
@@ -268,6 +268,7 @@ Ajouter dans le `<v-container>`, après le `<h1>` :
 import { ref } from 'vue'
 
 const drawer = ref(false)
+const currentYear = new Date().getFullYear()
 
 const navItems = [
   { title: 'Personnages', to: '/', icon: 'mdi-account-group' },
@@ -283,6 +284,8 @@ const navItems = [
 - La prop `to` de Vuetify fonctionne comme `<RouterLink>` — pas besoin d'importer le composant
 - `@click="drawer = !drawer"` = expression JS inline, inverse le booléen à chaque clic
 - `<RouterLink to="/">` sur le titre = clic sur le logo ramène à l'accueil (convention UX courante)
+- `style="color: inherit"` plutôt que `class="text-white"` — le lien hérite la couleur de la barre, fonctionne même si on change de thème
+- `currentYear` dans le script plutôt que `new Date().getFullYear()` dans le template — évite de recréer un objet Date à chaque rendu
 - L'item actif est automatiquement mis en surbrillance par Vue Router
 
 ## Étape 5 — Déploiement sur Vercel (~10 min)
@@ -385,7 +388,7 @@ import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
-const character = ref({})
+const character = ref(null)
 const loading = ref(true)
 const error = ref(null)
 

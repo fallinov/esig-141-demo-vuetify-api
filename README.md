@@ -4,13 +4,17 @@ Application Vue.js 3 + Vuetify 3 — code de départ pour le cours C141.
 
 ## Objectif
 
-Compléter l'application en 3 étapes :
+Compléter l'application en suivant les étapes du cours :
 
-1. **API** — Charger et afficher les personnages depuis l'API Rick and Morty
-2. **Page statique** — Remplir la page À propos avec des composants Vuetify
-3. **Navigation** — Ajouter un menu de navigation latéral
+0. **Config** — Palette de couleurs Rick & Morty + favicon
+1. **Découvrir l'API** — Requête GET dans Bruno, explorer le JSON
+2. **API + affichage** — Charger et afficher les personnages avec `fetch()`
+3. **Page statique** — Remplir la page À propos avec des composants Vuetify
+4. **Navigation** — Ajouter un menu de navigation latéral
+5. **Déploiement** — Déployer sur Vercel
+6. **Fiche détail** (bonus) — Route dynamique, page détail d'un personnage
 
-La branche `solution` contient le résultat final.
+La branche `solution` contient le résultat final. Voir `etapes-demo.md` pour le guide complet.
 
 ## Installation
 
@@ -26,6 +30,9 @@ L'application s'ouvre sur [http://localhost:3000](http://localhost:3000).
 ## Structure
 
 ```
+public/
+├── favicon.ico          # Favicon multi-tailles (16, 32, 48px)
+└── favicon.png          # Favicon PNG (silhouettes Rick & Morty)
 src/
 ├── App.vue              # Layout (v-app-bar + v-main + v-footer)
 ├── main.js              # Point d'entrée
