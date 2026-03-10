@@ -74,6 +74,7 @@ Dans [`index.html`](index.html), remplacer la balise `<link rel="icon">` existan
 
 - Qu'est-ce qu'une API REST : [devjs.ch/api/introduction](https://devjs.ch/api/introduction)
 - Tester une API avant de coder : [devjs.ch/api/tester-son-api](https://devjs.ch/api/tester-son-api)
+- Documentation de l'API : [rickandmortyapi.com/documentation](https://rickandmortyapi.com/documentation)
 
 ### Démo avec Bruno (ou Postman)
 
