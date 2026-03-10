@@ -4,13 +4,14 @@ Code de départ : branche `main` | Solution : branche `solution`
 
 | Étape | Durée | Contenu |
 |-------|-------|---------|
+| 0. Config Vuetify | ~5 min | Palette de couleurs Rick & Morty |
 | 1. Découvrir l'API | ~15 min | Requête GET dans Bruno, explorer le JSON |
 | 2. Appel API + affichage | ~30 min | `fetch()`, `v-card`, `v-img`, `v-chip` |
 | 3. Page À propos | ~15 min | Page statique avec composants Vuetify |
 | 4. Menu de navigation | ~20 min | `v-navigation-drawer`, hamburger, routage |
 | 5. Déploiement Vercel | ~10 min | Import GitHub, deploy, test mobile |
 | 6. Fiche de détail (bonus) | ~15 min | Route dynamique, `useRoute()`, 2ème fetch |
-| **Total** | **~1h30** | **+15 min si bonus** |
+| **Total** | **~1h35** | **+15 min si bonus** |
 
 ## Prérequis
 
@@ -18,6 +19,33 @@ Code de départ : branche `main` | Solution : branche `solution`
 - Projet cloné et ouvert dans WebStorm
 - `npm install` effectué
 - `npm run dev` lancé → http://localhost:3000
+
+## Configuration initiale — Palette de couleurs Rick & Morty
+
+Dans `src/plugins/vuetify.js`, personnaliser le thème avec les couleurs iconiques de la série :
+
+```js
+export default createVuetify({
+  theme: {
+    defaultTheme: 'dark',
+    themes: {
+      dark: {
+        colors: {
+          primary: '#00B5CC',    // Bleu turquoise (portail, logo R&M)
+          secondary: '#97CE4C',  // Vert portail/slime
+          accent: '#F2E94E',     // Jaune (cheveux Morty)
+          error: '#E63946',      // Rouge (lasers, danger)
+          info: '#44CFCB',       // Cyan clair
+          success: '#97CE4C',    // Vert (même que secondary)
+          warning: '#FFA724',    // Orange
+        },
+      },
+    },
+  },
+})
+```
+
+Cette palette personnalisée s'applique automatiquement à tous les composants Vuetify (`v-btn`, `v-card`, `v-chip`, etc.).
 
 ## Étape 1 — Découvrir l'API avec Bruno (~15 min)
 
