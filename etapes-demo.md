@@ -7,10 +7,10 @@ Code de départ : branche [`main`](https://github.com/fallinov/esig-141-demo-vue
 | 0. Config Vuetify | ~5 min | Palette de couleurs Rick & Morty + favicon |
 | 1. Découvrir l'API | ~15 min | Requête GET dans Bruno, explorer le JSON |
 | 2. Appel API + affichage | ~30 min | `fetch()`, [`v-card`](https://vuetifyjs.com/en/components/cards/), [`v-img`](https://vuetifyjs.com/en/components/images/), [`v-chip`](https://vuetifyjs.com/en/components/chips/) |
-| 3. Page À propos | ~15 min | Page statique avec composants Vuetify |
+| 3. Page À propos | ~15 min | Page statique : [`v-card`](https://vuetifyjs.com/en/components/cards/), [`v-icon`](https://vuetifyjs.com/en/components/icons/), [`v-list`](https://vuetifyjs.com/en/components/lists/) |
 | 4. Menu de navigation | ~20 min | [`v-navigation-drawer`](https://vuetifyjs.com/en/components/navigation-drawers/), hamburger, routage |
 | 5. Déploiement Vercel | ~10 min | Import GitHub, deploy, test mobile |
-| 6. Fiche de détail (bonus) | ~15 min | Route dynamique, `useRoute()`, 2ème fetch |
+| 6. Fiche de détail (bonus) | ~15 min | Route dynamique, `useRoute()`, [`v-skeleton-loader`](https://vuetifyjs.com/en/components/skeleton-loaders/), [`v-list`](https://vuetifyjs.com/en/components/lists/) |
 | **Total** | **~1h35** | **+15 min si bonus** |
 
 ## Prérequis
@@ -168,7 +168,7 @@ function statusColor(status) {
 }
 ```
 
-**3. Les cards** — dans le `<v-row>`, remplacer le `<v-col>` existant (celui avec le TODO) :
+**3. Les cards** — dans le [`<v-row>`](https://vuetifyjs.com/en/components/grids/), remplacer le `<v-col>` existant (celui avec le TODO) :
 
 ```html
 <v-col
@@ -212,8 +212,9 @@ function statusColor(status) {
 - `fetch()` retourne une **promesse** → on utilise `await` pour attendre la réponse
 - `response.ok` vérifie que le code HTTP est 200-299 (pas une erreur)
 - `response.json()` transforme le texte JSON en objet JavaScript
+- [`v-row`](https://vuetifyjs.com/en/components/grids/) / `v-col` = système de grille 12 colonnes (responsive avec `cols`, `sm`, `md`, `lg`)
 - `v-for` avec `:key` obligatoire — Vue a besoin d'identifier chaque élément
-- [`v-card`](https://vuetifyjs.com/en/components/cards/) = conteneur avec title, text, actions
+- [`v-card`](https://vuetifyjs.com/en/components/cards/) = conteneur avec [`v-card-title`](https://vuetifyjs.com/en/components/cards/#v-card-title), [`v-card-text`](https://vuetifyjs.com/en/components/cards/#v-card-text), actions
 - [`v-img`](https://vuetifyjs.com/en/components/images/) avec `cover` pour uniformiser les tailles d'images
 - [`v-chip`](https://vuetifyjs.com/en/components/chips/) avec `:color` dynamique — le `:` indique un binding JavaScript
 
@@ -242,7 +243,7 @@ Les skeleton loaders disparaissent trop vite en local car l'API répond en quelq
 
 Page 100% statique — le `<script setup>` reste vide, on ne travaille que dans le `<template>`.
 
-Ajouter dans le `<v-container>`, après le `<h1>` :
+Ajouter dans le [`<v-container>`](https://vuetifyjs.com/en/components/grids/#v-container), après le `<h1>` :
 
 ```html
 <v-card class="mb-4">
@@ -275,7 +276,7 @@ Ajouter dans le `<v-container>`, après le `<h1>` :
 ### Points à souligner
 
 - Pas de JavaScript nécessaire pour une page statique — le `<script setup>` reste vide
-- [`v-card`](https://vuetifyjs.com/en/components/cards/) = conteneur principal Vuetify (title, subtitle, text, actions)
+- [`v-card`](https://vuetifyjs.com/en/components/cards/) = conteneur principal Vuetify ([`v-card-title`](https://vuetifyjs.com/en/components/cards/#v-card-title), [`v-card-text`](https://vuetifyjs.com/en/components/cards/#v-card-text), actions)
 - [`v-icon`](https://vuetifyjs.com/en/components/icons/) pour afficher des icônes MDI
 - [`v-list`](https://vuetifyjs.com/en/components/lists/) / [`v-list-item`](https://vuetifyjs.com/en/components/lists/#v-list-item) avec `prepend-icon`, `title`, `subtitle` — tout déclaratif, zéro JS
 - Icônes MDI : catalogue sur [pictogrammers.com/library/mdi](https://pictogrammers.com/library/mdi/)
@@ -291,7 +292,7 @@ Ajouter dans le `<v-container>`, après le `<h1>` :
 
 ### Ce que les élèves codent dans [`App.vue`](src/App.vue)
 
-**1. Ajouter le drawer** — dans le `<template>`, juste avant le `<v-app-bar>` :
+**1. Ajouter le drawer** — dans le `<template>`, juste avant le [`<v-app-bar>`](https://vuetifyjs.com/en/components/app-bars/) :
 
 ```html
 <v-navigation-drawer v-model="drawer" temporary>
@@ -307,7 +308,7 @@ Ajouter dans le `<v-container>`, après le `<h1>` :
 </v-navigation-drawer>
 ```
 
-**2. Ajouter le hamburger** — dans le `<v-app-bar>`, juste avant `<v-app-bar-title>` :
+**2. Ajouter le hamburger** — dans le `<v-app-bar>`, juste avant [`<v-app-bar-title>`](https://vuetifyjs.com/en/components/app-bars/#v-app-bar-title) :
 
 ```html
 <v-app-bar-nav-icon @click="drawer = !drawer" />
@@ -352,7 +353,7 @@ const navItems = [
 
 - [`v-navigation-drawer`](https://vuetifyjs.com/en/components/navigation-drawers/) avec `v-model="drawer"` = binding bidirectionnel (ouvre/ferme le drawer)
 - `temporary` = le drawer se superpose au contenu (comportement mobile)
-- [`v-app-bar`](https://vuetifyjs.com/en/components/app-bars/) contient le hamburger et le titre
+- [`v-app-bar`](https://vuetifyjs.com/en/components/app-bars/) contient le hamburger ([`v-app-bar-nav-icon`](https://vuetifyjs.com/en/components/app-bars/#v-app-bar-nav-icon)) et le titre ([`v-app-bar-title`](https://vuetifyjs.com/en/components/app-bars/#v-app-bar-title))
 - La prop `to` de Vuetify fonctionne comme `<RouterLink>` — pas besoin d'importer le composant
 - `@click="drawer = !drawer"` = expression JS inline, inverse le booléen à chaque clic
 - `<RouterLink to="/">` sur le titre = clic sur le logo ramène à l'accueil (convention UX courante)
@@ -360,7 +361,7 @@ const navItems = [
 
 ### Résultat final — `App.vue` complet
 
-Pour vérifier son code, l'élève peut comparer avec le fichier complet :
+Pour vérifier son code, l'élève peut comparer avec le fichier complet. On y retrouve le layout Vuetify : [`v-app`](https://vuetifyjs.com/en/components/application/) → [`v-main`](https://vuetifyjs.com/en/components/application/#v-main) → [`v-footer`](https://vuetifyjs.com/en/components/footers/) :
 
 ```vue
 <template>
@@ -453,6 +454,8 @@ const navItems = [
 - 2ème appel API : `fetch()` avec un `id` dynamique
 
 ### 1. Créer le fichier [`src/pages/CharacterPage.vue`](src/pages/CharacterPage.vue)
+
+Composants utilisés : [`v-container`](https://vuetifyjs.com/en/components/grids/#v-container) / [`v-row`](https://vuetifyjs.com/en/components/grids/) / `v-col` (grille), [`v-skeleton-loader`](https://vuetifyjs.com/en/components/skeleton-loaders/), [`v-alert`](https://vuetifyjs.com/en/components/alerts/), [`v-btn`](https://vuetifyjs.com/en/components/buttons/), [`v-img`](https://vuetifyjs.com/en/components/images/), [`v-chip`](https://vuetifyjs.com/en/components/chips/), [`v-list`](https://vuetifyjs.com/en/components/lists/) / [`v-list-item`](https://vuetifyjs.com/en/components/lists/#v-list-item) / [`v-list-item-title`](https://vuetifyjs.com/en/components/lists/#v-list-item-title) / [`v-list-item-subtitle`](https://vuetifyjs.com/en/components/lists/#v-list-item-subtitle)
 
 ```vue
 <template>
