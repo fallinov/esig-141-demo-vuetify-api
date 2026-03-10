@@ -323,13 +323,13 @@ Ajouter dans le [`<v-container>`](https://vuetifyjs.com/en/components/grids/#v-c
 ```html
 <v-app-bar-title>
   <RouterLink to="/" class="text-decoration-none d-flex align-center" style="color: inherit">
-    <v-img src="/favicon.png" alt="Rick & Morty" width="32" height="32" class="mr-2" />
+    <img src="/favicon.png" alt="Rick & Morty" width="28" height="28" class="mr-2">
     Rick & Morty Explorer
   </RouterLink>
 </v-app-bar-title>
 ```
 
-> On réutilise le fichier [`public/favicon.png`](public/favicon.png) (les silhouettes Rick & Morty) comme logo dans le header. Les fichiers dans `public/` sont accessibles directement via `/` dans les URLs.
+> On réutilise le fichier [`public/favicon.png`](public/favicon.png) (les silhouettes Rick & Morty) comme logo dans le header. On utilise un `<img>` natif plutôt que `<v-img>` pour éviter les problèmes de layout dans la barre de navigation. Les fichiers dans `public/` sont accessibles directement via `/` dans les URLs.
 
 **4. Le script** — remplacer le contenu de `<script setup>` :
 
@@ -386,12 +386,12 @@ Pour vérifier son code, l'élève peut comparer avec le fichier complet. On y r
     </v-navigation-drawer>
 
     <!-- Barre de navigation -->
-    <v-app-bar color="primary" prominent>
+    <v-app-bar color="primary">
       <v-app-bar-nav-icon @click="drawer = !drawer" />
 
       <v-app-bar-title>
         <RouterLink to="/" class="text-decoration-none d-flex align-center" style="color: inherit">
-          <v-img src="/favicon.png" alt="Rick & Morty" width="32" height="32" class="mr-2" />
+          <img src="/favicon.png" alt="Rick & Morty" width="28" height="28" class="mr-2">
           Rick & Morty Explorer
         </RouterLink>
       </v-app-bar-title>
