@@ -11,7 +11,7 @@ Consomme l'API [Rick and Morty](https://rickandmortyapi.com/) avec `fetch()`.
 ## Stack
 - Vue.js 3 (Composition API, `<script setup>`)
 - Vuetify 3 (Material Design)
-- Vue Router 4
+- Vue Router 4 + unplugin-vue-router (routage automatique basé sur les fichiers)
 - Vite 5
 - Pinia (installé, pas utilisé dans cette démo)
 
@@ -23,12 +23,18 @@ public/
 src/
 ├── App.vue              # Layout (app-bar + footer, pas de drawer)
 ├── pages/
-│   ├── HomePage.vue     # TODO : fetch API + affichage personnages
-│   └── AboutPage.vue    # TODO : page statique Vuetify
-├── router/index.js      # 2 routes (/ et /about)
+│   ├── index.vue        # TODO : fetch API + affichage personnages (route /)
+│   └── about.vue        # TODO : page statique Vuetify (route /about)
+├── router/index.js      # Routes auto-générées (vue-router/auto-routes)
 ├── plugins/vuetify.js   # Config Vuetify (dark theme)
 └── stores/index.js      # Pinia (vide)
 ```
+
+## Routage automatique
+Les routes sont générées automatiquement depuis `src/pages/` par `unplugin-vue-router` :
+- `index.vue` → `/`
+- `about.vue` → `/about`
+- `character/[id].vue` → `/character/:id` (solution uniquement)
 
 ## API
 - Liste : `GET https://rickandmortyapi.com/api/character` → `data.results`

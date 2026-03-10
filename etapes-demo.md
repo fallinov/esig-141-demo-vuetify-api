@@ -31,7 +31,7 @@ Les élèves doivent comprendre les 3 blocs avant de toucher au code :
 - `<script setup>` — le JavaScript (la logique)
 - `<style>` — le CSS (optionnel dans cette démo, Vuetify s'en charge)
 
-Ouvrir [`src/App.vue`](src/App.vue) et [`src/pages/HomePage.vue`](src/pages/HomePage.vue) pour montrer ces blocs en situation réelle.
+Ouvrir [`src/App.vue`](src/App.vue) et [`src/pages/index.vue`](src/pages/index.vue) pour montrer ces blocs en situation réelle.
 
 ### Appels API avec `fetch()` et `async/await`
 
@@ -140,7 +140,7 @@ Dans [`index.html`](index.html), remplacer la balise `<link rel="icon">` existan
 
 On veut `data.results` — le tableau de personnages.
 
-### Ce que les élèves codent dans [`HomePage.vue`](src/pages/HomePage.vue)
+### Ce que les élèves codent dans [`index.vue`](src/pages/index.vue)
 
 **1. Le fetch** — dans le bloc `try` existant du `onMounted` (remplacer le commentaire TODO) :
 
@@ -239,7 +239,7 @@ Les skeleton loaders disparaissent trop vite en local car l'API répond en quelq
 - Composants Vuetify : [vuetifyjs.com/components/all](https://vuetifyjs.com/en/components/all/)
 - SFC (Single File Component) : [devjs.ch/vue/anatomie](https://devjs.ch/vue/anatomie.html)
 
-### Ce que les élèves codent dans [`AboutPage.vue`](src/pages/AboutPage.vue)
+### Ce que les élèves codent dans [`about.vue`](src/pages/about.vue)
 
 Page 100% statique — le `<script setup>` reste vide, on ne travaille que dans le `<template>`.
 
@@ -288,7 +288,11 @@ Ajouter dans le [`<v-container>`](https://vuetifyjs.com/en/components/grids/#v-c
 
 - Vue Router — introduction : [devjs.ch/vue-router/intro](https://devjs.ch/vue-router/intro.html)
 - `<RouterView>` dans [`App.vue`](src/App.vue) affiche le composant de la route courante
-- Montrer [`router/index.js`](src/router/index.js) — les 2 routes sont déjà câblées
+- Le routage est **automatique** grâce à `unplugin-vue-router` : chaque fichier `.vue` dans `src/pages/` génère une route
+  - `src/pages/index.vue` → `/`
+  - `src/pages/about.vue` → `/about`
+  - `src/pages/character/[id].vue` → `/character/:id` (paramètre dynamique)
+- Montrer [`router/index.js`](src/router/index.js) — les routes sont importées depuis `vue-router/auto-routes`
 
 ### Ce que les élèves codent dans [`App.vue`](src/App.vue)
 
@@ -453,7 +457,9 @@ const navItems = [
 - `useRoute()` pour récupérer les paramètres de la route
 - 2ème appel API : `fetch()` avec un `id` dynamique
 
-### 1. Créer le fichier [`src/pages/CharacterPage.vue`](src/pages/CharacterPage.vue)
+### 1. Créer le fichier [`src/pages/character/[id].vue`](src/pages/character/[id].vue)
+
+> Le nom du dossier `character/` et le fichier `[id].vue` (avec les crochets) génèrent automatiquement la route `/character/:id`. Pas besoin de toucher à `router/index.js`.
 
 Composants utilisés : [`v-container`](https://vuetifyjs.com/en/components/grids/#v-container) / [`v-row`](https://vuetifyjs.com/en/components/grids/) / `v-col` (grille), [`v-skeleton-loader`](https://vuetifyjs.com/en/components/skeleton-loaders/), [`v-alert`](https://vuetifyjs.com/en/components/alerts/), [`v-btn`](https://vuetifyjs.com/en/components/buttons/), [`v-img`](https://vuetifyjs.com/en/components/images/), [`v-chip`](https://vuetifyjs.com/en/components/chips/), [`v-list`](https://vuetifyjs.com/en/components/lists/) / [`v-list-item`](https://vuetifyjs.com/en/components/lists/#v-list-item) / [`v-list-item-title`](https://vuetifyjs.com/en/components/lists/#v-list-item-title) / [`v-list-item-subtitle`](https://vuetifyjs.com/en/components/lists/#v-list-item-subtitle)
 
@@ -555,22 +561,9 @@ onMounted(async () => {
 </script>
 ```
 
-### 2. Ajouter la route dans [`router/index.js`](src/router/index.js)
+> **Vérification** : taper `http://localhost:3000/character/1` dans la barre d'adresse → la fiche de Rick Sanchez s'affiche avec son image, son statut et ses infos. Si rien ne s'affiche, vérifier que le fichier est bien dans `src/pages/character/[id].vue` (avec les crochets).
 
-```js
-import CharacterPage from '@/pages/CharacterPage.vue'
-
-// Ajouter dans le tableau routes :
-{
-  path: '/character/:id',
-  name: 'character',
-  component: CharacterPage,
-}
-```
-
-> **Vérification** : taper `http://localhost:3000/character/1` dans la barre d'adresse → la fiche de Rick Sanchez s'affiche avec son image, son statut et ses infos. Si ça ne marche pas, vérifier que la route et l'import sont bien ajoutés dans `router/index.js`.
-
-### 3. Rendre les cards cliquables dans [`HomePage.vue`](src/pages/HomePage.vue)
+### 2. Rendre les cards cliquables dans [`index.vue`](src/pages/index.vue)
 
 Ajouter la prop `to` et `hover` sur chaque `<v-card>` :
 
@@ -586,7 +579,7 @@ Ajouter la prop `to` et `hover` sur chaque `<v-card>` :
 
 ### Points à souligner
 
-- `:id` dans la route = **paramètre dynamique** — la valeur change selon l'URL
+- `[id]` dans le nom de fichier = **paramètre dynamique** — génère automatiquement la route `/character/:id`
 - `useRoute().params.id` récupère la valeur du paramètre (ex : `1` pour `/character/1`)
 - Template literals `` `...${id}` `` pour construire l'URL dynamiquement
 - `?.` (optional chaining) pour éviter les erreurs si `origin` ou `location` est `null`
@@ -617,6 +610,7 @@ Ajouter la prop `to` et `hover` sur chaque `<v-card>` :
 | API — tester son API | [devjs.ch/api/tester-son-api](https://devjs.ch/api/tester-son-api.html) |
 | API — utilisation en projet | [devjs.ch/api/utilisation-en-projet](https://devjs.ch/api/utilisation-en-projet.html) |
 | Vue Router — introduction | [devjs.ch/vue-router/intro](https://devjs.ch/vue-router/intro.html) |
+| Créer un projet Vuetify | [devjs.ch/vue/creer-app-vuetify](https://devjs.ch/vue/creer-app-vuetify.html) |
 
 ## Projet personnel — À faire pour le prochain cours
 
@@ -640,8 +634,8 @@ Choisir une API gratuite et sans authentification. Quelques idées :
 ### Checklist du projet
 
 #### Mise en place
-- [ ] Créer un nouveau dépôt GitHub (nom du projet au choix)
-- [ ] Cloner le projet Vuetify de base (`npm create vuetify`) ou dupliquer le projet de la démo
+- [ ] Créer un projet Vuetify : [devjs.ch/vue/creer-app-vuetify](https://devjs.ch/vue/creer-app-vuetify.html) (`npm create vuetify`, preset **Recommended**)
+- [ ] Créer un dépôt GitHub et pousser le projet
 - [ ] `npm install` + `npm run dev` → l'app tourne en local
 
 #### Configuration
@@ -663,7 +657,8 @@ Choisir une API gratuite et sans authentification. Quelques idées :
 - [ ] Vérification de `response.ok` + `throw new Error(...)` si échec
 
 #### Navigation
-- [ ] Au moins 2 routes configurées dans [`router/index.js`](src/router/index.js)
+- [ ] Au moins 2 pages dans `src/pages/` (routage automatique via `unplugin-vue-router`)
+  - `index.vue` → `/`, `about.vue` → `/about`, `ressource/[id].vue` → `/ressource/:id`
 - [ ] Menu de navigation fonctionnel ([`v-navigation-drawer`](https://vuetifyjs.com/en/components/navigation-drawers/) ou [`v-app-bar`](https://vuetifyjs.com/en/components/app-bars/) avec liens)
 - [ ] Titre cliquable qui ramène à l'accueil
 
