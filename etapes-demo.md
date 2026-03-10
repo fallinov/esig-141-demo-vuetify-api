@@ -41,7 +41,10 @@ Présenter le principe d'un appel API asynchrone :
 - `fetch(url)` envoie une requête HTTP et retourne une **promesse**
 - `await` met le code en pause jusqu'à ce que la réponse arrive
 - `async` est obligatoire sur la fonction qui contient un `await`
-- `try/catch` permet de gérer les erreurs réseau ou serveur
+- `try` — le code qui peut échouer (appel réseau, parsing JSON)
+- `catch` — se déclenche si une erreur survient dans le `try`
+- `finally` — s'exécute toujours, que ça ait marché ou non (utile pour couper le loading)
+- `throw new Error(...)` — déclenche une erreur volontairement (ex : si le serveur répond 404)
 
 ## Configuration initiale — Palette de couleurs Rick & Morty
 
