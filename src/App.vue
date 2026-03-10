@@ -14,12 +14,12 @@
     </v-navigation-drawer>
 
     <!-- Barre de navigation -->
-    <v-app-bar color="primary" prominent>
+    <v-app-bar color="primary">
       <v-app-bar-nav-icon @click="drawer = !drawer" />
 
       <v-app-bar-title>
         <RouterLink to="/" class="text-decoration-none d-flex align-center" style="color: inherit">
-          <v-img src="/favicon.png" alt="Rick & Morty" width="32" height="32" class="mr-2" />
+          <img src="/favicon.png" alt="Rick & Morty" width="28" height="28" class="mr-2">
           Rick & Morty Explorer
         </RouterLink>
       </v-app-bar-title>
