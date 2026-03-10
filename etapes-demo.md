@@ -159,6 +159,8 @@ characters.value = data.results
 
 **2. La fonction `statusColor`** — avant le `onMounted` :
 
+Cette fonction retourne un nom de couleur selon le statut du personnage. On l'utilisera dans le template avec `:color="statusColor(character.status)"` pour colorer les chips automatiquement (vert = vivant, rouge = mort, gris = inconnu).
+
 ```js
 function statusColor(status) {
   const colors = { Alive: 'green', Dead: 'red', unknown: 'grey' }
