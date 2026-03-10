@@ -2,6 +2,8 @@
 
 Application Vue.js 3 + Vuetify 3 — code de départ pour le cours C141.
 
+![Page d'accueil](docs/screenshots/home.png)
+
 ## Objectif
 
 Compléter l'application en suivant les étapes du cours :
@@ -15,6 +17,12 @@ Compléter l'application en suivant les étapes du cours :
 6. **Fiche détail** (bonus) — Route dynamique, page détail d'un personnage
 
 La branche [`solution`](https://github.com/fallinov/esig-141-demo-vuetify-api/tree/solution) contient le résultat final. Voir [`etapes-demo.md`](etapes-demo.md) pour le guide complet.
+
+## Aperçu de la solution
+
+| Page d'accueil | Fiche détail | À propos |
+|:-:|:-:|:-:|
+| ![Accueil](docs/screenshots/home.png) | ![Détail](docs/screenshots/character-detail.png) | ![À propos](docs/screenshots/about.png) |
 
 ## Installation
 
@@ -34,16 +42,16 @@ public/
 ├── favicon.ico          # Favicon multi-tailles (16, 32, 48px)
 └── favicon.png          # Favicon PNG (silhouettes Rick & Morty)
 src/
-├── App.vue              # Layout (v-app-bar + v-main + v-footer)
+├── App.vue              # Layout (app-bar + drawer + footer)
 ├── main.js              # Point d'entrée
 ├── pages/
-│   ├── HomePage.vue     # TODO : Liste des personnages (API)
-│   └── AboutPage.vue    # TODO : Page statique
+│   ├── index.vue        # TODO : Liste des personnages (route /)
+│   └── about.vue        # TODO : Page statique (route /about)
 ├── plugins/
 │   ├── index.js         # Enregistrement des plugins
 │   └── vuetify.js       # Configuration Vuetify (dark theme)
 ├── router/
-│   └── index.js         # 2 routes (/ et /about)
+│   └── index.js         # Routes auto-générées (unplugin-vue-router)
 └── stores/
     └── index.js         # Pinia store
 ```
@@ -59,5 +67,5 @@ src/
 
 - [Vue.js 3](https://vuejs.org/) — Composition API
 - [Vuetify 3](https://vuetifyjs.com/) — Composants Material Design
-- [Vue Router 4](https://router.vuejs.org/)
+- [Vue Router 4](https://router.vuejs.org/) + unplugin-vue-router (routage automatique)
 - [Vite](https://vitejs.dev/) — Build tool
