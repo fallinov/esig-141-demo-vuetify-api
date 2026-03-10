@@ -2,10 +2,12 @@
   <v-container>
     <h1 class="text-h4 my-4">Personnages Rick & Morty</h1>
 
-    <!-- Chargement -->
-    <div v-if="loading" class="d-flex justify-center my-8">
-      <v-progress-circular indeterminate color="primary" size="64" />
-    </div>
+    <!-- Chargement (skeleton) -->
+    <v-row v-if="loading">
+      <v-col v-for="n in 8" :key="n" cols="12" sm="6" md="4" lg="3">
+        <v-skeleton-loader type="image, heading, text" />
+      </v-col>
+    </v-row>
 
     <!-- Erreur -->
     <v-alert v-else-if="error" type="error" class="my-4">
