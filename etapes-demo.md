@@ -617,3 +617,70 @@ Ajouter la prop `to` et `hover` sur chaque `<v-card>` :
 | API — tester son API | [devjs.ch/api/tester-son-api](https://devjs.ch/api/tester-son-api.html) |
 | API — utilisation en projet | [devjs.ch/api/utilisation-en-projet](https://devjs.ch/api/utilisation-en-projet.html) |
 | Vue Router — introduction | [devjs.ch/vue-router/intro](https://devjs.ch/vue-router/intro.html) |
+
+## Projet personnel — À faire pour le prochain cours
+
+L'objectif est de **reproduire ce que l'on vient de faire** avec votre propre projet : une application Vue.js + Vuetify qui consomme une API publique de votre choix.
+
+### Trouver une API publique
+
+Choisir une API gratuite et sans authentification. Quelques idées :
+
+| API | URL | Ressources |
+|-----|-----|------------|
+| PokéAPI | [pokeapi.co](https://pokeapi.co) | Pokémon, types, abilities |
+| Studio Ghibli | [ghibliapi.dev](https://ghibliapi.dev) | Films, personnages, lieux |
+| Star Wars | [swapi.dev](https://swapi.dev) | Films, personnages, planètes |
+| The Dog API | [thedogapi.com](https://thedogapi.com) | Races de chiens, images |
+| Open Meteo | [open-meteo.com](https://open-meteo.com) | Météo, prévisions |
+| REST Countries | [restcountries.com](https://restcountries.com) | Pays, drapeaux, capitales |
+
+> Tester l'API avec Bruno **avant** de commencer à coder — exactement comme on l'a fait à l'étape 1.
+
+### Checklist du projet
+
+#### Mise en place
+- [ ] Créer un nouveau dépôt GitHub (nom du projet au choix)
+- [ ] Cloner le projet Vuetify de base (`npm create vuetify`) ou dupliquer le projet de la démo
+- [ ] `npm install` + `npm run dev` → l'app tourne en local
+
+#### Configuration
+- [ ] Personnaliser le titre de l'application dans [`index.html`](index.html) (`<title>`)
+- [ ] Ajouter un favicon personnalisé dans `public/` (`.ico` et/ou `.png`)
+- [ ] Configurer les balises `<link rel="icon">` dans [`index.html`](index.html)
+- [ ] Personnaliser le thème Vuetify dans [`src/plugins/vuetify.js`](src/plugins/vuetify.js) (couleurs, dark/light)
+
+#### Pages (minimum 2)
+- [ ] **Page d'accueil** : affiche une liste de ressources depuis l'API (cards, grille responsive)
+- [ ] **Page À propos** : présentation du projet et de l'API utilisée (page statique)
+- [ ] (Bonus) **Page de détail** : route dynamique `/ressource/:id` avec fiche détaillée
+
+#### Appel API
+- [ ] `fetch()` avec `async/await` dans un `onMounted`
+- [ ] Gestion du chargement avec [`v-skeleton-loader`](https://vuetifyjs.com/en/components/skeleton-loaders/)
+- [ ] Gestion des erreurs avec [`v-alert`](https://vuetifyjs.com/en/components/alerts/)
+- [ ] Pattern `v-if="loading"` / `v-else-if="error"` / `v-else`
+- [ ] Vérification de `response.ok` + `throw new Error(...)` si échec
+
+#### Navigation
+- [ ] Au moins 2 routes configurées dans [`router/index.js`](src/router/index.js)
+- [ ] Menu de navigation fonctionnel ([`v-navigation-drawer`](https://vuetifyjs.com/en/components/navigation-drawers/) ou [`v-app-bar`](https://vuetifyjs.com/en/components/app-bars/) avec liens)
+- [ ] Titre cliquable qui ramène à l'accueil
+
+#### Composants Vuetify (minimum)
+- [ ] [`v-card`](https://vuetifyjs.com/en/components/cards/) pour afficher les ressources
+- [ ] [`v-img`](https://vuetifyjs.com/en/components/images/) si l'API fournit des images
+- [ ] [`v-chip`](https://vuetifyjs.com/en/components/chips/) ou autre composant pour mettre en valeur des données
+- [ ] Grille responsive avec [`v-row`](https://vuetifyjs.com/en/components/grids/) / `v-col` et breakpoints (`cols`, `sm`, `md`, `lg`)
+
+#### Déploiement
+- [ ] Code poussé sur GitHub (`git add`, `git commit`, `git push`)
+- [ ] Application déployée sur [Vercel](https://vercel.com)
+- [ ] URL Vercel fonctionnelle et accessible depuis un téléphone
+- [ ] Zéro erreur dans la console du navigateur (F12)
+
+#### Qualité
+- [ ] Code propre et indenté
+- [ ] Pas de `console.log()` oubliés
+- [ ] Noms de variables et composants cohérents
+- [ ] Application responsive (testée sur mobile via Vercel)
