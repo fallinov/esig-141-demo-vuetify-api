@@ -20,6 +20,19 @@ Code de départ : branche [`main`](https://github.com/fallinov/esig-141-demo-vue
 - `npm install` effectué
 - `npm run dev` lancé → [http://localhost:3000](http://localhost:3000)
 
+## Introduction — Anatomie d'un composant Vue
+
+Avant de commencer, présenter la structure d'un fichier `.vue` (Single File Component) :
+[devjs.ch/vue/anatomie](https://devjs.ch/vue/anatomie.html)
+
+Les élèves doivent comprendre les 3 blocs avant de toucher au code :
+
+- `<template>` — le HTML (ce qu'on voit)
+- `<script setup>` — le JavaScript (la logique)
+- `<style>` — le CSS (optionnel dans cette démo, Vuetify s'en charge)
+
+Ouvrir `src/App.vue` et `src/pages/HomePage.vue` pour montrer ces blocs en situation réelle.
+
 ## Configuration initiale — Palette de couleurs Rick & Morty
 
 Dans [`src/plugins/vuetify.js`](src/plugins/vuetify.js), **remplacer tout le contenu du fichier** par :
