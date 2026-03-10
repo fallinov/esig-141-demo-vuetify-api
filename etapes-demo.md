@@ -1,6 +1,6 @@
 # Étapes de la démo — Rick & Morty Explorer
 
-Code de départ : branche `main` | Solution : branche `solution`
+Code de départ : branche [`main`](https://github.com/fallinov/esig-141-demo-vuetify-api/tree/main) | Solution : branche [`solution`](https://github.com/fallinov/esig-141-demo-vuetify-api/tree/solution)
 
 | Étape | Durée | Contenu |
 |-------|-------|---------|
@@ -18,11 +18,11 @@ Code de départ : branche `main` | Solution : branche `solution`
 - Node.js installé
 - Projet cloné et ouvert dans WebStorm
 - `npm install` effectué
-- `npm run dev` lancé → http://localhost:3000
+- `npm run dev` lancé → [http://localhost:3000](http://localhost:3000)
 
 ## Configuration initiale — Palette de couleurs Rick & Morty
 
-Dans `src/plugins/vuetify.js`, **remplacer tout le contenu du fichier** par :
+Dans [`src/plugins/vuetify.js`](src/plugins/vuetify.js), **remplacer tout le contenu du fichier** par :
 
 ```js
 import '@mdi/font/css/materialdesignicons.css'
@@ -53,9 +53,9 @@ Cette palette personnalisée s'applique automatiquement à tous les composants V
 
 ### Favicon du projet
 
-Le fichier `public/favicon.png` contient les silhouettes de Rick & Morty (icône officielle de l'API).
+Le fichier [`public/favicon.png`](public/favicon.png) contient les silhouettes de Rick & Morty (icône officielle de l'API).
 
-Dans `index.html`, remplacer la balise `<link rel="icon">` existante par :
+Dans [`index.html`](index.html), remplacer la balise `<link rel="icon">` existante par :
 
 ```html
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -72,8 +72,8 @@ Dans `index.html`, remplacer la balise `<link rel="icon">` existante par :
 
 ### Théorie à présenter
 
-- Qu'est-ce qu'une API REST : [devjs.ch/api/introduction](https://devjs.ch/api/introduction/)
-- Tester une API avant de coder : [devjs.ch/api/tester-son-api](https://devjs.ch/api/tester-son-api/)
+- Qu'est-ce qu'une API REST : [devjs.ch/api/introduction](https://devjs.ch/api/introduction)
+- Tester une API avant de coder : [devjs.ch/api/tester-son-api](https://devjs.ch/api/tester-son-api)
 
 ### Démo avec Bruno (ou Postman)
 
@@ -102,8 +102,8 @@ Dans `index.html`, remplacer la balise `<link rel="icon">` existante par :
 
 ### Théorie à présenter
 
-- `async/await`, `try/catch`, `fetch()` : [devjs.ch/api/utilisation-en-projet](https://devjs.ch/api/utilisation-en-projet/)
-- `ref()`, `onMounted` : [devjs.ch/vue/bases](https://devjs.ch/vue/bases/)
+- `async/await`, `try/catch`, `fetch()` : [devjs.ch/api/utilisation-en-projet](https://devjs.ch/api/utilisation-en-projet)
+- `ref()`, `onMounted` : [devjs.ch/vue/bases](https://devjs.ch/vue/bases)
 
 ### Rappel de la structure JSON (vue dans Bruno)
 
@@ -113,7 +113,7 @@ Dans `index.html`, remplacer la balise `<link rel="icon">` existante par :
 
 On veut `data.results` — le tableau de personnages.
 
-### Ce que les élèves codent dans `HomePage.vue`
+### Ce que les élèves codent dans [`HomePage.vue`](src/pages/HomePage.vue)
 
 **1. Le fetch** — dans le bloc `try` existant du `onMounted` (remplacer le commentaire TODO) :
 
@@ -192,9 +192,9 @@ function statusColor(status) {
 ### Théorie à présenter
 
 - Composants Vuetify : [vuetifyjs.com/components/all](https://vuetifyjs.com/en/components/all/)
-- SFC (Single File Component) : [devjs.ch/vue/anatomie](https://devjs.ch/vue/anatomie/)
+- SFC (Single File Component) : [devjs.ch/vue/anatomie](https://devjs.ch/vue/anatomie)
 
-### Ce que les élèves codent dans `AboutPage.vue`
+### Ce que les élèves codent dans [`AboutPage.vue`](src/pages/AboutPage.vue)
 
 Page 100% statique — le `<script setup>` reste vide, on ne travaille que dans le `<template>`.
 
@@ -240,11 +240,11 @@ Ajouter dans le `<v-container>`, après le `<h1>` :
 
 ### Théorie à présenter
 
-- Vue Router — introduction : [devjs.ch/vue-router/intro](https://devjs.ch/vue-router/intro/)
-- `<RouterView>` dans `App.vue` affiche le composant de la route courante
-- Montrer `router/index.js` — les 2 routes sont déjà câblées
+- Vue Router — introduction : [devjs.ch/vue-router/intro](https://devjs.ch/vue-router/intro)
+- `<RouterView>` dans [`App.vue`](src/App.vue) affiche le composant de la route courante
+- Montrer [`router/index.js`](src/router/index.js) — les 2 routes sont déjà câblées
 
-### Ce que les élèves codent dans `App.vue`
+### Ce que les élèves codent dans [`App.vue`](src/App.vue)
 
 **1. Ajouter le drawer** — dans le `<template>`, juste avant le `<v-app-bar>` :
 
@@ -406,7 +406,7 @@ const navItems = [
 - `useRoute()` pour récupérer les paramètres de la route
 - 2ème appel API : `fetch()` avec un `id` dynamique
 
-### 1. Créer le fichier `src/pages/CharacterPage.vue`
+### 1. Créer le fichier [`src/pages/CharacterPage.vue`](src/pages/CharacterPage.vue)
 
 ```vue
 <template>
@@ -501,7 +501,7 @@ onMounted(async () => {
 </script>
 ```
 
-### 2. Ajouter la route dans `router/index.js`
+### 2. Ajouter la route dans [`router/index.js`](src/router/index.js)
 
 ```js
 import CharacterPage from '@/pages/CharacterPage.vue'
@@ -516,7 +516,7 @@ import CharacterPage from '@/pages/CharacterPage.vue'
 
 > **Vérification** : taper `http://localhost:3000/character/1` dans la barre d'adresse → la fiche de Rick Sanchez s'affiche avec son image, son statut et ses infos. Si ça ne marche pas, vérifier que la route et l'import sont bien ajoutés dans `router/index.js`.
 
-### 3. Rendre les cards cliquables dans `HomePage.vue`
+### 3. Rendre les cards cliquables dans [`HomePage.vue`](src/pages/HomePage.vue)
 
 Ajouter la prop `to` et `hover` sur chaque `<v-card>` :
 
@@ -553,12 +553,12 @@ Ajouter la prop `to` et `hover` sur chaque `<v-card>` :
 
 | Ressource | URL |
 |-----------|-----|
-| API Rick and Morty | https://rickandmortyapi.com |
-| API — documentation | https://rickandmortyapi.com/documentation |
-| Vuetify — tous les composants | https://vuetifyjs.com/en/components/all/ |
-| Icônes MDI | https://pictogrammers.com/library/mdi/ |
-| Vue.js — bases | https://devjs.ch/vue/bases/ |
-| API — introduction | https://devjs.ch/api/introduction/ |
-| API — tester son API | https://devjs.ch/api/tester-son-api/ |
-| API — utilisation en projet | https://devjs.ch/api/utilisation-en-projet/ |
-| Vue Router — introduction | https://devjs.ch/vue-router/intro/ |
+| API Rick and Morty | [rickandmortyapi.com](https://rickandmortyapi.com) |
+| API — documentation | [rickandmortyapi.com/documentation](https://rickandmortyapi.com/documentation) |
+| Vuetify — tous les composants | [vuetifyjs.com/components/all](https://vuetifyjs.com/en/components/all/) |
+| Icônes MDI | [pictogrammers.com/library/mdi](https://pictogrammers.com/library/mdi/) |
+| Vue.js — bases | [devjs.ch/vue/bases](https://devjs.ch/vue/bases) |
+| API — introduction | [devjs.ch/api/introduction](https://devjs.ch/api/introduction) |
+| API — tester son API | [devjs.ch/api/tester-son-api](https://devjs.ch/api/tester-son-api) |
+| API — utilisation en projet | [devjs.ch/api/utilisation-en-projet](https://devjs.ch/api/utilisation-en-projet) |
+| Vue Router — introduction | [devjs.ch/vue-router/intro](https://devjs.ch/vue-router/intro) |
