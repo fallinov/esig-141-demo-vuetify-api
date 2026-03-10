@@ -31,7 +31,17 @@ Les élèves doivent comprendre les 3 blocs avant de toucher au code :
 - `<script setup>` — le JavaScript (la logique)
 - `<style>` — le CSS (optionnel dans cette démo, Vuetify s'en charge)
 
-Ouvrir `src/App.vue` et `src/pages/HomePage.vue` pour montrer ces blocs en situation réelle.
+Ouvrir [`src/App.vue`](src/App.vue) et [`src/pages/HomePage.vue`](src/pages/HomePage.vue) pour montrer ces blocs en situation réelle.
+
+### Appels API avec `fetch()` et `async/await`
+
+Présenter le principe d'un appel API asynchrone :
+[devjs.ch/api/utilisation-en-projet](https://devjs.ch/api/utilisation-en-projet.html)
+
+- `fetch(url)` envoie une requête HTTP et retourne une **promesse**
+- `await` met le code en pause jusqu'à ce que la réponse arrive
+- `async` est obligatoire sur la fonction qui contient un `await`
+- `try/catch` permet de gérer les erreurs réseau ou serveur
 
 ## Configuration initiale — Palette de couleurs Rick & Morty
 
