@@ -18,7 +18,7 @@
       <v-app-bar-nav-icon @click="drawer = !drawer" />
 
       <v-app-bar-title>
-        <RouterLink to="/" class="text-white text-decoration-none d-flex align-center">
+        <RouterLink to="/" class="text-decoration-none d-flex align-center" style="color: inherit">
           <v-icon icon="mdi-alien" class="mr-2" />
           Rick & Morty Explorer
         </RouterLink>
@@ -31,9 +31,9 @@
 
     <v-footer class="text-center">
       <v-col>
-        Démo C141 — ESIG {{ new Date().getFullYear() }} —
+        Démo C141 — ESIG {{ currentYear }} —
         API
-        <a href="https://rickandmortyapi.com" target="_blank" class="text-primary">
+        <a href="https://rickandmortyapi.com" target="_blank" rel="noopener noreferrer" class="text-primary">
           rickandmortyapi.com
         </a>
       </v-col>
@@ -45,6 +45,7 @@
 import { ref } from 'vue'
 
 const drawer = ref(false)
+const currentYear = new Date().getFullYear()
 
 const navItems = [
   { title: 'Personnages', to: '/', icon: 'mdi-account-group' },

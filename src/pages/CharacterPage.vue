@@ -75,7 +75,7 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 
 // État réactif
-const character = ref({})
+const character = ref(null)
 const loading = ref(true)
 const error = ref(null)
 
