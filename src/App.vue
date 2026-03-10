@@ -14,9 +14,9 @@
 
     <v-footer class="text-center">
       <v-col>
-        Démo C141 — ESIG {{ new Date().getFullYear() }} —
+        Démo C141 — ESIG {{ currentYear }} —
         API
-        <a href="https://rickandmortyapi.com" target="_blank" class="text-primary">
+        <a href="https://rickandmortyapi.com" target="_blank" rel="noopener noreferrer" class="text-primary">
           rickandmortyapi.com
         </a>
       </v-col>
@@ -25,5 +25,5 @@
 </template>
 
 <script setup>
-  //
+const currentYear = new Date().getFullYear()
 </script>
