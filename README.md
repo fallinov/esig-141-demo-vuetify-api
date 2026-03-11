@@ -42,7 +42,7 @@ public/
 ├── favicon.ico          # Favicon multi-tailles (16, 32, 48px)
 └── favicon.png          # Favicon PNG (silhouettes Rick & Morty)
 src/
-├── App.vue              # Layout (app-bar + drawer + footer)
+├── App.vue              # Layout (app-bar + footer)
 ├── main.js              # Point d'entrée
 ├── pages/
 │   ├── index.vue        # TODO : Liste des personnages (route /)
