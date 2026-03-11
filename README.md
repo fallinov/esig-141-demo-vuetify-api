@@ -2,6 +2,8 @@
 
 Application Vue.js 3 + Vuetify 3 — code de départ pour le cours C141.
 
+**[Voir la démo en ligne](https://fallinov.github.io/esig-141-demo-vuetify-api/)**
+
 ![Page d'accueil](docs/screenshots/home.png)
 
 ## Objectif
